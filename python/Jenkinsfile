@@ -10,7 +10,19 @@ pipeline {
 			}
 		}
 
-
+		stage("Build docker image"){
+			steps { 
+				   dockerfile {
+					filename 'Dockerfile'
+					dir 'python'
+					label 'python3'
+					registryUrl 'https://harbor.lnxsystems.com/'
+					registryCredentialsId 'jnvilo-harbor-creds'
+   				 }	
+				
+			}
+			
+		|
 
 
 
