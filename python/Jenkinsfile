@@ -10,10 +10,13 @@ node {
     stage('Build image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-
+        
+        dir("${env.WORKSPACE}/python"){
+        sh "pwd"
         app = docker.build("jnvilo/python3")
+    
+        }
     }
-
     stage('Test image') {
         /* Ideally, we would run a test framework against our image.
          * For this example, we're using a Volkswagen-type approach ;-) */
